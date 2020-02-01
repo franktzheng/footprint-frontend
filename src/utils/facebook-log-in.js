@@ -1,5 +1,7 @@
+import ENV from '../../env.js'
+
 export async function logInWithFacebook() {
-  await Facebook.initializeAsync('611775999619124')
+  await Facebook.initializeAsync(ENV.FACEBOOK_APP_ID)
   const { type, token } = await Facebook.logInWithReadPermissionsAsync({
     permissions: ['public_profile']
   })
