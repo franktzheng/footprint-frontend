@@ -1,3 +1,4 @@
+import * as Facebook from 'expo-facebook'
 import ENV from '../../env.js'
 
 export async function logInWithFacebook() {
