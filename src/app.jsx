@@ -44,27 +44,27 @@ function App() {
         'source-sans-pro-regular': require('../assets/fonts/SourceSansPro-Regular.ttf')
       })
       await Permissions.askAsync(Permissions.CAMERA)
-      // try {
-      //   let id
-      //   let name
-      //   let token
-      //   try {
-      //     data = await logInWithFacebook()
-      //     id = data.id
-      //     name = data.name
-      //     token = data.token
-      //   } catch (err) {}
-      //   if (id && name && token) {
-      //     const user = await signIn(id, name)
-      //     await postFootstep(id)
-      //     setToken(token)
-      //     setUser(user)
-      //     await updateUser(id, name)
-      //   }
-      // } catch (err) {
-      //   console.log(err)
-      //   Alert.alert('Error!')
-      // }
+      try {
+        let id
+        let name
+        let token
+        try {
+          data = await logInWithFacebook()
+          id = data.id
+          name = data.name
+          token = data.token
+        } catch (err) {}
+        if (id && name && token) {
+          const user = await signIn(id, name)
+          await postFootstep(id)
+          setToken(token)
+          setUser(user)
+          await updateUser(id, name)
+        }
+      } catch (err) {
+        console.log(err)
+        Alert.alert('Error!')
+      }
       setLoading(false)
     }
     fetchData()
