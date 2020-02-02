@@ -17,7 +17,6 @@ function HomeScreen({ navigation }) {
         overScrollMode={'never'}
         vertical={true}
         contentContainerStyle={{
-          flex: 1,
           paddingVertical: 32,
           backgroundColor: '#ffffff'
         }}

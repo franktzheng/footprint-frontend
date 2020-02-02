@@ -6,7 +6,7 @@ import FPBold from '../base/FPBold'
 import FPText from '../base/FPText'
 
 function RightFootprint({ date, emissions, onPress }) {
-  const positive = emissions > 0
+  const positive = emissions < 0
   return (
     <TouchableHighlight onPress={onPress} underlayColor="#ffffff">
       <View
@@ -27,9 +27,9 @@ function RightFootprint({ date, emissions, onPress }) {
           style={{ display: 'flex', flexDirection: 'column', marginLeft: 24 }}
         >
           <FPText>{moment(date).format('MMM D')}</FPText>
-          <FPBold style={{ color: positive ? '#82E0AA' : '#EC7063' }}>
+          <FPBold style={{ color: positive ? '#EC7063' : '#82E0AA' }}>
             {positive ? '+' : null}
-            {Math.round(emissions)} g
+            {-1 * Math.round(emissions)} g
           </FPBold>
         </View>
       </View>

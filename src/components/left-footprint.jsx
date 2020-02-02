@@ -6,7 +6,7 @@ import FPBold from '../base/FPBold'
 import FPText from '../base/FPText'
 
 function LeftFootprint({ date, emissions, onPress }) {
-  const positive = emissions > 0
+  const positive = emissions < 0
   return (
     <TouchableHighlight onPress={onPress} underlayColor="#ffffff">
       <View
@@ -31,12 +31,12 @@ function LeftFootprint({ date, emissions, onPress }) {
           </FPText>
           <FPBold
             style={{
-              color: positive ? '#82E0AA' : '#EC7063',
+              color: positive ? '#EC7063' : '#82E0AA',
               textAlign: 'right'
             }}
           >
             {positive ? '+' : null}
-            {Math.round(emissions)} g
+            {-1 * Math.round(emissions)} g
           </FPBold>
         </View>
         <Image

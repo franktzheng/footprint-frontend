@@ -16,7 +16,7 @@ function TransportationScreen({ navigation }) {
   const [distance, setDistance] = useState('')
 
   const handleSubmit = async () => {
-    if (!selectedOption || !distance) {
+    if (!selectedOption || !distance || distance <= 0) {
       console.log(distance, selectedOption)
       Alert.alert('Oops!', 'Please fill out the form correctly before saving.')
       return

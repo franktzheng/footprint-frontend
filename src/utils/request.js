@@ -1,18 +1,25 @@
-import axios from 'axios'
+import rawAxios from 'axios'
 
 const BASE_URL = 'http://footprint-ucla.herokuapp.com/api'
 
-export async function postVision(img) {
-  console.log({
-    url: `${BASE_URL}/vision`,
-    data: { img },
-    method: 'POST'
-  })
+async function axios(...args) {
+  console.log(args[0])
+  try {
+    const res = await rawAxios(...args)
+    return res
+  } catch (err) {
+    console.log(err.response.data)
+    throw err
+  }
+}
+
+export async function postVision(id, encoded) {
   const res = await axios({
-    url: `${BASE_URL}/vision`,
-    data: { img },
+    url: `${BASE_URL}/users/vision`,
+    data: { fb_id: id, encoded, date: new Date().toDateString() },
     method: 'POST'
   })
+  console.log(res.data)
   return res.data
 }
 

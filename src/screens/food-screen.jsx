@@ -21,7 +21,7 @@ export default function FoodScreen({ navigation }) {
   const [output, setOutput] = React.useState('')
   const [foods, setFoods] = React.useState([])
   const [foodAmounts, setFoodAmounts] = React.useState([])
-  const [json, setjson] = React.useState([{ name: 'xd', amount: 1 }])
+  const [json, setjson] = React.useState([])
 
   console.log(json)
   const table = json.map((element, index) => {
@@ -296,7 +296,7 @@ export default function FoodScreen({ navigation }) {
   )
 }
 
-FoodScreen.navigationOptions = {
+FoodScreen.navigationOptions = ({ navigation }) => ({
   title: 'Log Food',
   headerStyle: {
     shadowOpacity: 0,
@@ -312,5 +312,19 @@ FoodScreen.navigationOptions = {
     fontSize: 24,
     fontFamily: 'source-sans-pro-semibold'
   },
-  headerTitleAlign: 'center'
-}
+  headerTitleAlign: 'center',
+  headerRight: () => (
+    <TouchableHighlight
+      underlayColor="#F2F3F4"
+      onPress={() => navigation.navigate('Camera')}
+      style={{
+        backgroundColor: '#ffffff',
+        padding: 8,
+        borderRadius: 24,
+        marginRight: 8
+      }}
+    >
+      <FontAwesome5Icon name="camera" size={24} color="#80CBC4" />
+    </TouchableHighlight>
+  )
+})

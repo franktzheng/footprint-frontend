@@ -6,20 +6,21 @@ import FPBold from '../base/FPBold'
 import FPText from '../base/FPText'
 import { useUser } from '../context/user-context'
 import { logInWithFacebook } from '../utils/facebook-log-in'
-import { signIn } from '../utils/request'
+import { postFootstep, signIn } from '../utils/request'
 
 function LogInScreen() {
-  const { setUser, updateUser } = useUser()
+  const { setUser, updateUser, setToken } = useUser()
   const handleLogIn = async () => {
     try {
-      const { id, name } = await logInWithFacebook()
+      const { id, name, token } = await logInWithFacebook()
       const data = await signIn(id, name)
       await AsyncStorage.setItem('userId', id)
       await AsyncStorage.setItem('name', name)
       if (data) {
-        await postFootstep()
+        await postFootstep(id)
         await updateUser(id, name)
         setUser(data)
+        setToken(token)
       } else {
         throw new Error()
       }

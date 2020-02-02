@@ -12,7 +12,7 @@ export async function logInWithFacebook() {
       `https://graph.facebook.com/me?access_token=${token}`
     )
     const data = await response.json()
-    return data
+    return { ...data, token }
   }
   throw new Error('Error logging in with Facebook.')
 }

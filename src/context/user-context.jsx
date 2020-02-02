@@ -5,6 +5,7 @@ const UserContext = React.createContext({ user: null, setUser: null })
 
 export function UserProvider({ children }) {
   const [user, setUser] = useState(null)
+  const [token, setToken] = useState(null)
 
   const updateUser = async (id, name) => {
     if (!id) {
@@ -18,7 +19,9 @@ export function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{ user, setUser, updateUser }}>
+    <UserContext.Provider
+      value={{ user, setUser, token, setToken, updateUser }}
+    >
       {children}
     </UserContext.Provider>
   )
