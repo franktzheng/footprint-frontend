@@ -53,6 +53,9 @@ function DayScreen({ navigation }) {
       <FPBold style={{ fontSize: 20, marginBottom: 8 }}>
         Transportation Log
       </FPBold>
+      <FPText>
+        {footprint.transportationLog.length == 0 && 'No transportation logs.'}
+      </FPText>
       {footprint.transportationLog.map(({ mode, distance }) => (
         <View
           style={{
@@ -70,6 +73,7 @@ function DayScreen({ navigation }) {
       <FPBold style={{ fontSize: 20, marginBottom: 8, marginTop: 12 }}>
         Food Log
       </FPBold>
+      <FPText>{footprint.foodLog.length == 0 && 'No food logs.'}</FPText>
       {footprint.foodLog.map(({ foodName, servings }) => (
         <View
           style={{
@@ -87,36 +91,57 @@ function DayScreen({ navigation }) {
         </View>
       ))}
 
-      <FPBold style={{ fontSize: 20, marginBottom: 12, marginTop: 18 }}>
+      <FPBold
+        style={{
+          fontSize: 20,
+          marginBottom:
+            footprint.transportationLog.length == 0 &&
+            footprint.foodLog.length == 0
+              ? 8
+              : 12,
+          marginTop:
+            footprint.transportationLog.length == 0 &&
+            footprint.foodLog.length == 0
+              ? 12
+              : 18
+        }}
+      >
         Total Carbon Footprint
       </FPBold>
-      <PieChart style={{ height: 200, marginBottom: 12 }} data={data} />
-      <View>
-        <View
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'row'
-          }}
-        >
-          <FontAwesome5Icon name="square" color="#F06292" size={16} solid />
-          <FPText style={{ marginLeft: 8, fontSize: 16 }}>Food</FPText>
-        </View>
-        <View
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'row'
-          }}
-        >
-          <FontAwesome5Icon name="square" color="#FFD54F" size={16} solid />
-          <FPText style={{ marginLeft: 8, fontSize: 16 }}>
-            Transportation
-          </FPText>
-        </View>
-      </View>
+      {footprint.transportationLog.length == 0 &&
+      footprint.foodLog.length == 0 ? (
+        <FPText>No data to visualize.</FPText>
+      ) : (
+        <>
+          <PieChart style={{ height: 200, marginBottom: 12 }} data={data} />
+          <View>
+            <View
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'row'
+              }}
+            >
+              <FontAwesome5Icon name="square" color="#F06292" size={16} solid />
+              <FPText style={{ marginLeft: 8, fontSize: 16 }}>Food</FPText>
+            </View>
+            <View
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'row'
+              }}
+            >
+              <FontAwesome5Icon name="square" color="#FFD54F" size={16} solid />
+              <FPText style={{ marginLeft: 8, fontSize: 16 }}>
+                Transportation
+              </FPText>
+            </View>
+          </View>
+        </>
+      )}
     </View>
   ) : (
     <View>

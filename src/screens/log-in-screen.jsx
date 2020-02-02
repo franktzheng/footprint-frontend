@@ -1,21 +1,24 @@
 import React from 'react'
-import { Alert, View } from 'react-native'
+import { Alert, AsyncStorage, View } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import FPBold from '../base/FPBold'
 import FPText from '../base/FPText'
 import { useUser } from '../context/user-context'
 import { logInWithFacebook } from '../utils/facebook-log-in'
-import { getUserData } from '../utils/request'
+import { signIn } from '../utils/request'
 
 function LogInScreen() {
-  const { user, setUser } = useUser()
+  const { setUser, updateUser } = useUser()
   const handleLogIn = async () => {
     try {
       const { id, name } = await logInWithFacebook()
-      console.log(id)
-      const data = await getUserData(id)
+      const data = await signIn(id, name)
+      await AsyncStorage.setItem('userId', id)
+      await AsyncStorage.setItem('name', name)
       if (data) {
+        await postFootstep()
+        await updateUser(id, name)
         setUser(data)
       } else {
         throw new Error()

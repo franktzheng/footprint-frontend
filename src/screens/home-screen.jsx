@@ -4,6 +4,7 @@ import { TouchableHighlight, View } from 'react-native'
 import ActionButton from 'react-native-action-button'
 import { ScrollView } from 'react-native-gesture-handler'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import FPText from '../base/FPText'
 import LeftFootprint from '../components/left-footprint'
 import RightFootprint from '../components/right-footprint'
 import { useUser } from '../context/user-context'
@@ -11,15 +12,19 @@ import { useUser } from '../context/user-context'
 function HomeScreen({ navigation }) {
   const { user } = useUser()
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <ScrollView
         overScrollMode={'never'}
         vertical={true}
         contentContainerStyle={{
+          flex: 1,
           paddingVertical: 32,
           backgroundColor: '#ffffff'
         }}
       >
+        <FPText style={{ paddingHorizontal: 24 }}>
+          {user.footsteps.length == 0 && 'Your journey has yet to begin!'}
+        </FPText>
         {user.footsteps.map(footprint => {
           const { date, stats } = footprint
           return moment([2000, 1, 1]).diff(moment(date), 'days') % 2 == 0 ? (
@@ -49,7 +54,7 @@ function HomeScreen({ navigation }) {
           textStyle={{ fontFamily: 'source-sans-pro-regular', fontSize: 14 }}
           buttonColor="#80CBC4"
           title="Log Transportation"
-          onPress={() => {}}
+          onPress={() => navigation.navigate('Transportation')}
         >
           <FontAwesome5 name="car" color="#ffffff" />
         </ActionButton.Item>
@@ -58,7 +63,7 @@ function HomeScreen({ navigation }) {
           textStyle={{ fontFamily: 'source-sans-pro-regular', fontSize: 14 }}
           buttonColor="#80CBC4"
           title="Log Food"
-          onPress={() => {}}
+          onPress={() => navigation.navigate('Food')}
         >
           <FontAwesome5 name="carrot" color="#ffffff" />
         </ActionButton.Item>

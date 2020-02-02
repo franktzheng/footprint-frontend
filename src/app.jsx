@@ -7,13 +7,14 @@ import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { UserProvider, useUser } from './context/user-context'
 import DayScreen from './screens/day-screen'
+import FoodScreen from './screens/food-screen'
 import HomeScreen from './screens/home-screen'
 import LogInScreen from './screens/log-in-screen'
 import ProfileScreen from './screens/profile-screen'
 import SettingsScreen from './screens/settings-screen'
-import { getUserId } from './utils/facebook-log-in'
+import TransportationScreen from './screens/transportation-screen'
 import LocationTask from './utils/location-task'
-import { getUserData } from './utils/request'
+import { postFootstep, signIn } from './utils/request'
 
 TaskManager.defineTask('LOCATION', LocationTask)
 
@@ -25,14 +26,16 @@ const AppNavigator = createStackNavigator({
   Home: { screen: HomeScreen },
   Settings: { screen: SettingsScreen },
   Profile: { screen: ProfileScreen },
-  Day: { screen: DayScreen }
+  Day: { screen: DayScreen },
+  Food: { screen: FoodScreen },
+  Transportation: { screen: TransportationScreen }
 })
 
 const AppContainer = createAppContainer(AppNavigator)
 const AuthContainer = createAppContainer(AuthNavigator)
 
 function App() {
-  const { user, setUser } = useUser()
+  const { user, setUser, updateUser } = useUser()
   const [loading, setLoading] = useState(true)
   useEffect(() => {
     const fetchData = async () => {
@@ -40,12 +43,17 @@ function App() {
         'source-sans-pro-semibold': require('../assets/fonts/SourceSansPro-SemiBold.ttf'),
         'source-sans-pro-regular': require('../assets/fonts/SourceSansPro-Regular.ttf')
       })
-      const token = await AsyncStorage.getItem('userToken')
+      const id = await AsyncStorage.getItem('userId')
+      const name = await AsyncStorage.getItem('name')
       try {
-        const id = await getUserId(token)
-        const user = await getUserData(id)
-        setUser(user)
+        if (id && name) {
+          const user = await signIn(id, name)
+          await postFootstep(id)
+          setUser(user)
+          await updateUser(id, name)
+        }
       } catch (err) {
+        console.log(err)
         Alert.alert('Error!')
       }
       setLoading(false)
