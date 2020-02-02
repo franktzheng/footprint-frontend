@@ -53,9 +53,9 @@ function DayScreen({ navigation }) {
       <FPBold style={{ fontSize: 20, marginBottom: 8 }}>
         Transportation Log
       </FPBold>
-      <FPText>
-        {footprint.transportationLog.length == 0 && 'No transportation logs.'}
-      </FPText>
+      {footprint.transportationLog.length == 0 && (
+        <FPText>No transportation logs. </FPText>
+      )}
       {footprint.transportationLog.map(({ mode, distance }) => (
         <View
           style={{
@@ -73,7 +73,7 @@ function DayScreen({ navigation }) {
       <FPBold style={{ fontSize: 20, marginBottom: 8, marginTop: 12 }}>
         Food Log
       </FPBold>
-      <FPText>{footprint.foodLog.length == 0 && 'No food logs.'}</FPText>
+      {footprint.foodLog.length == 0 && <FPText>No food logs.</FPText>}
       {footprint.foodLog.map(({ foodName, servings }) => (
         <View
           style={{
@@ -157,6 +157,8 @@ DayScreen.navigationOptions = ({ navigation }) => ({
     shadowOffset: {
       height: 0
     },
+    borderBottomWidth: 1,
+    borderBottomColor: '#F2F3F4',
     // elevation is for Android
     elevation: 0
   },
@@ -164,9 +166,7 @@ DayScreen.navigationOptions = ({ navigation }) => ({
     fontSize: 24,
     fontFamily: 'source-sans-pro-semibold'
   },
-  headerTitleAlign: 'center',
-  borderBottomWidth: 1,
-  borderBottomColor: '#F2F3F4'
+  headerTitleAlign: 'center'
 })
 
 export default DayScreen

@@ -93,7 +93,7 @@ HomeScreen.navigationOptions = ({ navigation }) => ({
     return (
       <TouchableHighlight
         underlayColor="#F2F3F4"
-        onPress={() => navigation.navigate('Settings')}
+        onPress={() => navigation.navigate('Profile')}
         style={{
           backgroundColor: '#ffffff',
           padding: 8,
@@ -101,23 +101,7 @@ HomeScreen.navigationOptions = ({ navigation }) => ({
           marginRight: 8
         }}
       >
-        <FontAwesome5 name="cog" size={24} color="#80CBC4" />
-      </TouchableHighlight>
-    )
-  },
-  headerLeft: () => {
-    return (
-      <TouchableHighlight
-        underlayColor="#F2F3F4"
-        onPress={() => navigation.navigate('Profile')}
-        style={{
-          backgroundColor: '#ffffff',
-          padding: 8,
-          borderRadius: 24,
-          marginLeft: 8
-        }}
-      >
-        <FontAwesome5 name="user-circle" size={24} color="#80CBC4" solid />
+        <FontAwesome5 name="user-circle" size={24} color="#80CBC4" />
       </TouchableHighlight>
     )
   }

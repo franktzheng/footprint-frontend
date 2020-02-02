@@ -1,5 +1,6 @@
 import * as Expo from 'expo'
 import * as Font from 'expo-font'
+import * as Permissions from 'expo-permissions'
 import * as TaskManager from 'expo-task-manager'
 import React, { useEffect, useState } from 'react'
 import { Alert, AsyncStorage } from 'react-native'
@@ -11,11 +12,11 @@ import FoodScreen from './screens/food-screen'
 import HomeScreen from './screens/home-screen'
 import LogInScreen from './screens/log-in-screen'
 import ProfileScreen from './screens/profile-screen'
-import SettingsScreen from './screens/settings-screen'
 import TransportationScreen from './screens/transportation-screen'
 import LocationTask from './utils/location-task'
 import { postFootstep, signIn } from './utils/request'
 
+console.disableYellowBox = true
 TaskManager.defineTask('LOCATION', LocationTask)
 
 const AuthNavigator = createStackNavigator({
@@ -23,8 +24,8 @@ const AuthNavigator = createStackNavigator({
 })
 
 const AppNavigator = createStackNavigator({
+  // Camera: { screen: CameraScreen },
   Home: { screen: HomeScreen },
-  Settings: { screen: SettingsScreen },
   Profile: { screen: ProfileScreen },
   Day: { screen: DayScreen },
   Food: { screen: FoodScreen },
@@ -43,6 +44,7 @@ function App() {
         'source-sans-pro-semibold': require('../assets/fonts/SourceSansPro-SemiBold.ttf'),
         'source-sans-pro-regular': require('../assets/fonts/SourceSansPro-Regular.ttf')
       })
+      await Permissions.askAsync(Permissions.CAMERA)
       const id = await AsyncStorage.getItem('userId')
       const name = await AsyncStorage.getItem('name')
       try {

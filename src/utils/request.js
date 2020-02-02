@@ -1,24 +1,24 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://footprint-ucla.herokuapp.com/api/users'
+const BASE_URL = 'http://footprint-ucla.herokuapp.com/api'
 
-export async function getUser(id) {
+export async function postVision(img) {
   console.log({
-    url: `${BASE_URL}/me`,
-    data: { fb_id: id },
-    method: 'GET'
+    url: `${BASE_URL}/vision`,
+    data: { img },
+    method: 'POST'
   })
   const res = await axios({
-    url: `${BASE_URL}/me`,
-    data: { fb_id: id },
-    method: 'GET'
+    url: `${BASE_URL}/vision`,
+    data: { img },
+    method: 'POST'
   })
   return res.data
 }
 
 export async function postFootstep(id) {
   const res = await axios({
-    url: `${BASE_URL}/footstep`,
+    url: `${BASE_URL}/users/footstep`,
     data: { fb_id: id },
     method: 'POST'
   })
@@ -27,7 +27,7 @@ export async function postFootstep(id) {
 
 export async function signIn(id, name) {
   const res = await axios({
-    url: `${BASE_URL}/signup`,
+    url: `${BASE_URL}/users/signup`,
     data: { fb_id: id, name },
     method: 'POST'
   })
@@ -35,13 +35,8 @@ export async function signIn(id, name) {
 }
 
 export async function postTransportation(id, mode, distance) {
-  console.log({
-    url: `${BASE_URL}/transportation`,
-    data: { fb_id: id, mode, distance, date: new Date().toDateString() },
-    method: 'POST'
-  })
   await axios({
-    url: `${BASE_URL}/transportation`,
+    url: `${BASE_URL}/users/transportation`,
     data: { fb_id: id, mode, distance, date: new Date().toDateString() },
     method: 'POST'
   })
@@ -49,18 +44,8 @@ export async function postTransportation(id, mode, distance) {
 
 export async function postFood(id, items) {
   for (const item of items) {
-    console.log({
-      url: `${BASE_URL}/food`,
-      data: {
-        fb_id: id,
-        foodName: item.name,
-        servings: item.amount,
-        date: new Date().toDateString()
-      },
-      method: 'POST'
-    })
     await axios({
-      url: `${BASE_URL}/food`,
+      url: `${BASE_URL}/users/food`,
       data: {
         fb_id: id,
         foodName: item.name,

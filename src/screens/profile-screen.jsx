@@ -3,8 +3,8 @@ import { Text, View } from 'react-native'
 
 function ProfileScreen() {
   return (
-    <View>
-      <Text>Profile</Text>
+    <View style={{ backgroundColor: '#fff', flex: 1 }}>
+      <Text>TO DO</Text>
     </View>
   )
 }
@@ -17,15 +17,15 @@ ProfileScreen.navigationOptions = {
       height: 0
     },
     // elevation is for Android
-    elevation: 0
+    elevation: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F2F3F4'
   },
   headerTitleStyle: {
     fontSize: 24,
     fontFamily: 'source-sans-pro-semibold'
   },
-  headerTitleAlign: 'center',
-  borderBottomWidth: 1,
-  borderBottomColor: '#F2F3F4'
+  headerTitleAlign: 'center'
 }
 
 export default ProfileScreen
