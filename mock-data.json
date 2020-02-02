@@ -1,0 +1,129 @@
+{
+  "users": [
+    {
+      "fb_id": 1032581013765535,
+      "name": "Frank Zheng",
+      "footsteps": [
+        {
+          "date": "Sat Feb 01 2020",
+          "foodLog": [
+            { "foodName": "celery", "servings": 3, "emissions": 5 },
+            { "foodName": "pizza", "servings": 1, "emissions": 1 },
+            { "foodName": "mango", "servings": 1, "emissions": 4 },
+            { "foodName": "pasta", "servings": 2, "emissions": 2 }
+          ],
+          "transportationLog": [
+            { "mode": "car", "distance": 10, "emissions": 3 },
+            { "mode": "bike", "distance": 10, "emissions": 4 },
+            { "mode": "walk", "distance": 2, "emissions": 7 }
+          ],
+          "stats": {
+            "emissions": 23
+          }
+        },
+        {
+          "date": "Fri Jan 31 2020",
+          "foodLog": [
+            { "foodName": "celery", "servings": 3, "emissions": 5 },
+            { "foodName": "sandwich", "servings": 1, "emissions": 1 },
+            { "foodName": "mango", "servings": 1, "emissions": 4 },
+            { "foodName": "pasta", "servings": 2, "emissions": 2 }
+          ],
+          "transportationLog": [
+            { "mode": "car", "distance": 10, "emissions": 3 },
+            { "mode": "bike", "distance": 10, "emissions": 4 },
+            { "mode": "walk", "distance": 2, "emissions": 7 }
+          ],
+          "stats": {
+            "emissions": -23
+          }
+        },
+        {
+          "date": "Thu Jan 30 2020",
+          "foodLog": [
+            { "foodName": "watermelon", "servings": 3, "emissions": 5 },
+            { "foodName": "pizza", "servings": 1, "emissions": 5 },
+            { "foodName": "mango", "servings": 1, "emissions": 5 },
+            { "foodName": "pasta", "servings": 2, "emissions": 5 }
+          ],
+          "transportationLog": [
+            { "mode": "car", "distance": 10, "emissions": 5 },
+            { "mode": "bike", "distance": 10, "emissions": 5 },
+            { "mode": "walk", "distance": 2, "emissions": 5 }
+          ],
+          "stats": {
+            "emissions": 43
+          }
+        },
+        {
+          "date": "Wed Jan 29 2020",
+          "foodLog": [
+            { "foodName": "salad", "servings": 3, "emissions": 5 },
+            { "foodName": "pizza", "servings": 1, "emissions": 5 },
+            { "foodName": "mango", "servings": 1, "emissions": 5 },
+            { "foodName": "pasta", "servings": 2, "emissions": 5 }
+          ],
+          "transportationLog": [
+            { "mode": "car", "distance": 10, "emissions": 5 },
+            { "mode": "bike", "distance": 10, "emissions": 5 },
+            { "mode": "walk", "distance": 2, "emissions": 5 }
+          ],
+          "stats": {
+            "emissions": 5
+          }
+        },
+        {
+          "date": "Tue Jan 28 2020",
+          "foodLog": [
+            { "foodName": "salmon", "servings": 3, "emissions": 5 },
+            { "foodName": "pizza", "servings": 1, "emissions": 5 },
+            { "foodName": "mango", "servings": 1, "emissions": 5 },
+            { "foodName": "pasta", "servings": 2, "emissions": 5 }
+          ],
+          "transportationLog": [
+            { "mode": "car", "distance": 10, "emissions": 5 },
+            { "mode": "bike", "distance": 10, "emissions": 5 },
+            { "mode": "walk", "distance": 2, "emissions": 5 }
+          ],
+          "stats": {
+            "emissions": 7
+          }
+        },
+        {
+          "date": "Mon Jan 27 2020",
+          "foodLog": [
+            { "foodName": "chicken", "servings": 3, "emissions": 5 },
+            { "foodName": "pizza", "servings": 1, "emissions": 5 },
+            { "foodName": "mango", "servings": 1, "emissions": 5 },
+            { "foodName": "pasta", "servings": 2, "emissions": 5 }
+          ],
+          "transportationLog": [
+            { "mode": "car", "distance": 10, "emissions": 5 },
+            { "mode": "bike", "distance": 10, "emissions": 5 },
+            { "mode": "walk", "distance": 2, "emissions": 5 }
+          ],
+          "stats": {
+            "emissions": 1
+          }
+        },
+        {
+          "date": "Sun Jan 26 2020",
+          "foodLog": [
+            { "foodName": "celery", "servings": 3, "emissions": 5 },
+            { "foodName": "pizza", "servings": 1, "emissions": 5 },
+            { "foodName": "mango", "servings": 1, "emissions": 5 },
+            { "foodName": "beef", "servings": 2, "emissions": 5 }
+          ],
+          "transportationLog": [
+            { "mode": "car", "distance": 10, "emissions": 5 },
+            { "mode": "bike", "distance": 10, "emissions": 5 },
+            { "mode": "walk", "distance": 2, "emissions": 5 }
+          ],
+          "stats": {
+            "emissions": 9
+          }
+        }
+      ]
+    }
+  ]
+}

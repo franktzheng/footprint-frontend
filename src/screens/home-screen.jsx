@@ -6,18 +6,10 @@ import { ScrollView } from 'react-native-gesture-handler'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import LeftFootprint from '../components/left-footprint'
 import RightFootprint from '../components/right-footprint'
-
-const data = []
-
-for (let i = 0; i < 15; i++) {
-  data.push({
-    id: i,
-    date: moment().add(-1 * i, 'days'),
-    emissions: (Math.random() - 0.5) * 50
-  })
-}
+import { useUser } from '../context/user-context'
 
 function HomeScreen({ navigation }) {
+  const { user } = useUser()
   return (
     <View>
       <ScrollView
@@ -28,23 +20,24 @@ function HomeScreen({ navigation }) {
           backgroundColor: '#ffffff'
         }}
       >
-        {data.map(({ id, date, emissions }) =>
-          moment([2000, 1, 1]).diff(moment(date), 'days') % 2 == 0 ? (
+        {user.footsteps.map(footprint => {
+          const { date, stats } = footprint
+          return moment([2000, 1, 1]).diff(moment(date), 'days') % 2 == 0 ? (
             <LeftFootprint
-              key={id}
-              onPress={() => navigation.navigate('Day', { id })}
+              key={date}
+              onPress={() => navigation.navigate('Day', { footprint })}
               date={date}
-              emissions={emissions}
+              emissions={stats.emissions}
             />
           ) : (
             <RightFootprint
-              key={id}
-              onPress={() => navigation.navigate('Day', { id })}
+              key={date}
+              onPress={() => navigation.navigate('Day', { footprint })}
               date={date}
-              emissions={emissions}
+              emissions={stats.emissions}
             />
           )
-        )}
+        })}
       </ScrollView>
       <ActionButton
         hideShadow={true}

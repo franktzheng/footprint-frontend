@@ -16,3 +16,11 @@ export async function logInWithFacebook() {
   }
   throw new Error('Error logging in with Facebook.')
 }
+
+export async function getUserId(token) {
+  const response = await fetch(
+    `https://graph.facebook.com/me?access_token=${token}`
+  )
+  const data = await response.json()
+  return data.id
+}
